@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="container" style="max-width: 600px;">
+        <header>
+            <h2 style="margin:0; font-size: 1.5rem;">Atividades</h2>
+            
+            <div class="header-controls">
+                <button onclick="toggleManageMode()" id="manageBtn" class="manage-btn">Gerenciar</button>
+                <button onclick="toggleAddForm()" class="circle-btn" style="background: var(--primary);">+</button>
+                
+                <button onclick="toggleMenu()" class="menu-btn" id="menuBtn">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </button>
+            </div>
+        </header>
+
+        <div id="glassMenu" class="glass-menu">
+            <div class="menu-item" onclick="alert('Você está logado como aluno!')">
+                <span>👤 Meu Perfil</span>
+            </div>
+            
+            <div class="menu-item" onclick="alert('Configurações em desenvolvimento')">
+                <span>⚙️ Ajustes</span>
+            </div>
+            
+            <div style="height: 1px; background: rgba(0,0,0,0.1); margin: 5px 0;"></div>
+            
+            <div class="menu-item danger" onclick="logout()">
+                <span>🚪 Sair</span>
+            </div>
+        </div>
+        
+        <div id="addSection">
+            <div class="add-container">
+                <input type="text" id="taskDesc" placeholder="Nova atividade..." onkeypress="handleEnter(event)">
+                <button onclick="createTask()" class="save-btn">Salvar</button>
+            </div>
+        </div>
+
+        <ul id="taskList">
+            </ul>
+        
+        <button id="bulkDeleteBtn" onclick="deleteSelectedTasks()">Apagar Selecionados (0)</button>
+    </div>
+
+    <script src="scripts.js"></script>
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById('glassMenu').classList.toggle('show');
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('glassMenu');
+            const btn = document.getElementById('menuBtn');
+            if (!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('show');
+        });
+
+        function toggleAddForm() {
+            const section = document.getElementById('addSection');
+            const input = document.getElementById('taskDesc');
+            document.getElementById('glassMenu').classList.remove('show');
+
+            if (section.style.display === 'block') {
+                section.style.display = 'none';
+            } else {
+                section.style.display = 'block';
+                input.focus();
+            }
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') createTask();
+        }
+    </script>
+</body>
+</html>
