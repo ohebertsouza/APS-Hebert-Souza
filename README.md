@@ -34,7 +34,7 @@ Durante o desenvolvimento, enfrentei desafios técnicos interessantes que servir
     * A leitura da resposta da API também exigiu ajustes, pois o servidor retornava objetos aninhados (`{ tasks: [...] }`) que precisaram ser tratados no script.
 
 2.  **CSS e Nomenclatura:**
-    * Um bug visual persistente foi causado pelo uso da propriedade `colour` (inglês britânico) ao invés de `colour`, o que impedia a renderização correta das fontes. O problema foi identificado e corrigido em todo o arquivo de estilos.
+    * Um bug visual persistente foi causado pelo uso da propriedade `colour` (inglês britânico) ao invés de `color`, o que impedia a renderização correta das fontes. O problema foi identificado e corrigido em todo o arquivo de estilos.
 
 3.  **Manipulação do DOM:**
     * A lógica para atualizar a lista de tarefas sem recarregar a página (AJAX) foi desafiadora, especialmente para garantir que o "Estado Vazio" (mensagem de "Tudo Limpo") aparecesse e desaparecesse nos momentos certos.
